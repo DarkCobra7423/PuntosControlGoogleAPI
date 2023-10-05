@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 02-10-2023 a las 17:26:53
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Servidor: fdb29.awardspace.net
+-- Tiempo de generación: 05-10-2023 a las 20:59:12
+-- Versión del servidor: 5.7.40-log
+-- Versión de PHP: 8.1.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,11 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `proyectoprueba`
+-- Base de datos: `3791641_movieday`
 --
-
-CREATE DATABASE `proyectoprueba`;
-USE `proyectoprueba`;
 
 -- --------------------------------------------------------
 
@@ -36,7 +33,7 @@ CREATE TABLE `coordinate` (
   `longitude` varchar(100) DEFAULT NULL,
   `time` timestamp NULL DEFAULT NULL,
   `token` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -48,7 +45,7 @@ CREATE TABLE `coordinatedistance` (
   `fkCoordinate` int(11) NOT NULL,
   `fkDistance` int(11) NOT NULL,
   `points` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -59,8 +56,9 @@ CREATE TABLE `coordinatedistance` (
 CREATE TABLE `distance` (
   `idDistance` int(11) NOT NULL,
   `meters` varchar(100) DEFAULT NULL,
-  `kilometers` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `kilometers` varchar(100) DEFAULT NULL,
+  `token` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Índices para tablas volcadas
