@@ -84,25 +84,7 @@ class CoordinateController extends Controller
         $model->token = $request->post('token');
         // Intentar guardar el modelo "Coordinate" en la base de datos.
         if ($model->save()) {
-            // Si se guarda correctamente, se imprime 'Guardado coordinate'.
-            // Crear una nueva instancia del modelo "Coordinatedistance".
-            $relation = new Coordinatedistance();
-            // Asignar valores a las propiedades del modelo "Coordinatedistance".
-            // Asignar la propiedad "fkCoordinate" con el valor de "idDistance" en la solicitud POST.
-            $relation->fkCoordinate = $request->post('idDistance');
-            // Asignar la propiedad "fkDistance" con el valor del ID del modelo "Coordinate" recién guardado.
-            $relation->fkDistance = $model->idCoordinate;
-            // Asignar la propiedad "points" con un mensaje de texto que indica el punto de inicio y destino.
-            $relation->points = 'Punto ' . $request->post('point1') . ' a punto ' . $request->post('point2') . ':';
-            // Intentar guardar el modelo "Coordinatedistance" en la base de datos.
-            if ($relation->save()) {
-                // Si se guarda correctamente, se imprime 'Guardado'.
-                echo 'Guardado';
-            } else {
-                // Si hay un error al guardar "Coordinatedistance", se imprime 'Error al guardar datos' y se sale del script.
-                echo 'Error al guardar datos';
-                exit;
-            }
+            echo "Guardado Coordenadas";
         } else {
             // Si hay un error al guardar "Coordinate", se imprime 'Error al guardar datos' y se sale del script.
             echo 'Error al guardar datos';

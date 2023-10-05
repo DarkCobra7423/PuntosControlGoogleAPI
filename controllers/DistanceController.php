@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Coordinatedistance;
 use app\models\Distance;
+use app\models\Coordinate;
 use app\models\DistanceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -80,10 +81,31 @@ class DistanceController extends Controller
             $model->meters = $request->post('meters');
             // Asignar el valor de "kilometers" en la solicitud POST a la propiedad "kilometers" del modelo.
             $model->kilometers = $request->post('kilometers');
+            // Asignar la propiedad "token" con el valor de "token" en la solicitud POST.
+            $model->token = $request->post('token');
             // Intentar guardar el modelo "Distance" en la base de datos.
             if ($model->save()) {
                 // Si se guarda correctamente, imprimir el ID del modelo "Distance".
-                echo $model->idDistance;
+                //echo $model->idDistance;
+                // Si se guarda correctamente, se imprime 'Guardado coordinate'.
+                // Crear una nueva instancia del modelo "Coordinatedistance".
+                $relation = new Coordinatedistance();
+                // Asignar valores a las propiedades del modelo "Coordinatedistance".
+                $relation->fkCoordinate = Coordinate::find()->where(['=', 'token', $request->post('token')])->one()->idCoordinate;
+                // Asignar la propiedad "fkDistance" con el valor del ID del modelo "Coordinate" recién guardado.
+                $relation->fkDistance = $model->idDistance;
+                // Asignar la propiedad "points" con un mensaje de texto que indica el punto de inicio y destino.
+                $relation->points = 'Punto ' . $request->post('point1') . ' a punto ' . $request->post('point2') . ':';
+                // Intentar guardar el modelo "Coordinatedistance" en la base de datos.
+                print_r($relation);
+                if ($relation->save()) {
+                    // Si se guarda correctamente, se imprime 'Guardado'.
+                    echo 'Guardado';
+                } else {
+                    // Si hay un error al guardar "Coordinatedistance", se imprime 'Error al guardar datos' y se sale del script.
+                    echo 'Error al guardar datos';
+                    exit;
+                }
             } else {
                 // Si hay un error al guardar el modelo "Distance", imprimir "No guardado" y salir del script.
                 echo "No guardado";

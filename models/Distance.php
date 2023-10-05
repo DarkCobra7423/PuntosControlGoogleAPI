@@ -28,6 +28,7 @@ class Distance extends \yii\db\ActiveRecord
     {
         return [
             [['meters', 'kilometers'], 'string', 'max' => 100],
+            [['token'], 'string', 'max' => 200],
         ];
     }
 
@@ -40,6 +41,7 @@ class Distance extends \yii\db\ActiveRecord
             'idDistance' => 'ID',
             'meters' => 'Metros',
             'kilometers' => 'Kilometros',
+            'token' => 'Token',
         ];
     }
 }
