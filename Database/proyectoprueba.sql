@@ -2,7 +2,7 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: fdb29.awardspace.net
+-- Servidor: localhost
 -- Tiempo de generación: 05-10-2023 a las 20:59:12
 -- Versión del servidor: 5.7.40-log
 -- Versión de PHP: 8.1.24
@@ -18,8 +18,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `3791641_movieday`
+-- Base de datos: `proyectoprueba`
 --
+CREATE DATABASE proyectoprueba;
+
+USE proyectoprueba;
 
 -- --------------------------------------------------------
 
